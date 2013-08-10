@@ -29,6 +29,8 @@ func = [nums, nums2, upAlphabet, lwAlphabet]
 
 def userCustom(order, data, length, pos):
     if (order == 'ordered'):
+        if pos >= length:
+            pos %= length
         return data[pos]
     elif (order == 'random'):
         return data[random.randint(0, length - 1)]
