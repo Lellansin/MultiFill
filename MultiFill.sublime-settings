@@ -1,0 +1,29 @@
+{
+	"custom":
+	[
+		{
+			"name"  : "Names (ordered)",
+			"way"   : "ordered",
+			"values": 
+			[
+				"Alan","Bob","Cici","David","Elis","Frankly"
+			]
+		},
+		{
+			"name"  : "Gender (random)",
+			"way"   : "random",
+			"values": 
+			[
+				"male","female"
+			]
+		},
+		{
+			"name":"V Roman (ordered)",
+			"way"   : "ordered",
+			"values":
+			[
+				"I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII"
+			]
+		}			
+	]
+}

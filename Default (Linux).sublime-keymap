@@ -1,0 +1,7 @@
+
+[
+	{
+		"keys": ["ctrl+m","ctrl+f"],
+		"command": "multi_fill"
+	}
+]
