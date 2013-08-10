@@ -39,7 +39,7 @@ def userCustom(order, data, length, pos):
 #
 
 def getList():
-    return ['Numners since 0 (ordered)', 'Numners since 1 (ordered)', 'Uppercase letters (ordered)', 'Lower case letters (ordered)' ];
+    return ['Numbers since 0 (ordered)', 'Numbers since 1 (ordered)', 'Uppercase letters (ordered)', 'Lower case letters (ordered)' ];
 
 
 class MultiFillSetTextCommand(sublime_plugin.TextCommand):
