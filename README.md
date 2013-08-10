@@ -10,7 +10,13 @@ Um, I think it will be very useful, while we write .html .sql and so on.
 
 <h1>Using Screenshot</h1>
 
-<h2>Ordered fill</h2>
+<h1>Ordered fill numbers</h1>
+
+![image](https://github.com/Lellansin/MultiFill/raw/master/screenshots/multi_fill_num_1.jpg)
+![image](https://github.com/Lellansin/MultiFill/raw/master/screenshots/multi_fill_num_2.jpg)
+![image](https://github.com/Lellansin/MultiFill/raw/master/screenshots/multi_fill_num_3.jpg)
+
+<h2>Auto fill names</h2>
 
 ![image](https://github.com/Lellansin/MultiFill/raw/master/screenshots/multi_fill_names_1.jpg)
 ![image](https://github.com/Lellansin/MultiFill/raw/master/screenshots/multi_fill_names_2.jpg)
