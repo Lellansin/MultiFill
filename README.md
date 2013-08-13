@@ -42,6 +42,8 @@ the config file is <code>MultiFill.sublime-settings</code> it seems like:
 {
 	"custom":
 	[
+		// you can edit the default
+
 		{
 			"name"  : "Names (ordered)",
 			"way"   : "ordered",
@@ -65,7 +67,18 @@ the config file is <code>MultiFill.sublime-settings</code> it seems like:
 			[
 				"I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII"
 			]
-		}			
+		}
+
+		// you can add your new
+		,{
+			"name":"My text (ordered)",
+			"way"   : "ordered",
+			"values":
+			[
+				"test1","test2","test3","test4","test5","test6"
+			]
+		}
+
 	]
 }
 </pre>
@@ -88,17 +101,10 @@ MultiFill（多处填充）是一个 sublime text 的插件。主要作用就是
 
 安装
 --------------------
+直接通过 package control 搜索 MultiFill 安装，如果没有 package control 请搜索 “sublime 插件” 然后安装。
 
-今天刚写出来，新鲜着，目前还未加入package control，只能手动安装：
 
-* 下载当前包 [MultiFill-master.zip]: https://github.com/Lellansin/MultiFill/archive/master.zip
-* 找到sublime上面的菜单->【Preferences】->【Browse Packages..】打开【插件目录】
-* 将 【MultiFill-master.zip】 解压到【插件目录】 注意 .py 等文件要在 【Packages/MultiFill/】 目录下
-
-放置好之后可以重启 sublime 或者不重启直接尝试使用 <code>[ctrl+m]</code> 和 <code>[ctrl+k]</code> 来呼叫 MultiFill 的界面，示例参照上面的图片。
-
-配置文件就是刚刚那个【Packages/MultiFill/】目录下的 <code>MultiFill.sublime-settings</code> 输出的文字还有是否随机插入都是可以配置的。
-
+配置文件在 【Preferences】->【Package Settings】->【MultiFill】 中，请参照 Setting - Default 来编写字节的 User - Default， 当然也可以直接在 Setting - Default 中修改
 <pre>
 {
 	"custom":
