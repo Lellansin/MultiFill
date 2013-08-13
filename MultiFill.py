@@ -1,11 +1,10 @@
 
 import sublime
 import sublime_plugin
-import os
 import random
 
 #
-#	inner function
+#   inner function
 #
 
 
@@ -37,11 +36,11 @@ def userCustom(order, data, length, pos):
 
 
 #
-# 	text insert part
+#   text insert part
 #
 
 def getList():
-    return ['Numbers since 0 (Ordered)', 'Numbers since 1 (Ordered)', 'Uppercase letters (Ordered)', 'Lower case letters (Ordered)' ];
+    return ['Numbers since 0 (Ordered)', 'Numbers since 1 (Ordered)', 'Uppercase letters (Ordered)', 'Lower case letters (Ordered)']
 
 
 class MultiFillSetTextCommand(sublime_plugin.TextCommand):
@@ -59,18 +58,18 @@ class MultiFillSetTextCommand(sublime_plugin.TextCommand):
             item = custom[chosen - len(func)]
             points = self.view.sel()
             count = len(points)
-            for i in xrange(0, count):
+            for i in range(0, count):
                 # echo(str(len(item["values"])));
                 self.view.replace(edit, points[i], userCustom(
                     item['way'], item["values"], len(item["values"]), i))
         else:
             points = self.view.sel()
             count = len(points)
-            for i in xrange(0, count):
+            for i in range(0, count):
                 self.view.replace(edit, points[i], func[chosen](i))
 
 #
-#	select panel
+#   select panel
 #
 
 
@@ -80,8 +79,8 @@ def getCustom():
     settings = sublime.load_settings('MultiFill.sublime-settings')
     custom = settings.get("custom")
     result = []
-    for i in xrange(0, len(custom)):
-        result += [custom[i]["name"]];
+    for i in range(0, len(custom)):
+        result += [custom[i]["name"]]
     return result
 
 
@@ -89,7 +88,7 @@ class MultiFillCommand(sublime_plugin.WindowCommand):
 
     def run(self):
         # get the fill list
-        self.command_list = getList() + getCustom();
+        self.command_list = getList() + getCustom()
         if not self.command_list:
             echo('There may be some error with the config file.')
             return
@@ -102,7 +101,6 @@ class MultiFillCommand(sublime_plugin.WindowCommand):
         # mark the index user choose ( this may be a bad way :( )
         settings = sublime.load_settings('MultiFill.tmp')
         settings.set('chosen', index)
-        c = settings.get('chosen')
         sublime.save_settings('MultiFill.tmp')
 
         # call the text fill
@@ -111,9 +109,9 @@ class MultiFillCommand(sublime_plugin.WindowCommand):
             view.run_command('multi_fill_set_text')
 
 #
-# 	debug
+#   debug
 #
 
 
-def echo(str):
-    sublime.message_dialog(str);
+def echo(message):
+    sublime.message_dialog(message)
