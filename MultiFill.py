@@ -93,7 +93,7 @@ class MultiFillCommand(sublime_plugin.WindowCommand):
         # call the text fill
         view = sublime.active_window().active_view()
         if view:
-            view.run_command('multi_fill_set_text', args={'chosen':index, 'custom': self.settings.get("custom")})
+            view.run_command('multi_fill_set_text', {'chosen':index, 'custom': self.settings.get("custom")})
 
 
 #
