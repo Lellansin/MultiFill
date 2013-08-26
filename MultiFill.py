@@ -2,6 +2,7 @@
 import sublime
 import sublime_plugin
 import random
+import string
 
 #
 #   inner function
@@ -67,6 +68,7 @@ class MultiFillSetTextCommand(sublime_plugin.TextCommand):
 #   select panel
 #
 
+
 class MultiFillCommand(sublime_plugin.WindowCommand):
 
     def run(self):
@@ -93,15 +95,14 @@ class MultiFillCommand(sublime_plugin.WindowCommand):
         # call the text fill
         view = sublime.active_window().active_view()
         if view:
-            view.run_command('multi_fill_set_text', {'chosen':index, 'custom': self.settings.get("custom")})
-
+            view.run_command('multi_fill_set_text', {'chosen': index, 'custom': self.settings.get("custom")})
 
 
 #
 #   formula insert part
 #
+class MultiIntegerSetTextCommand(sublime_plugin.TextCommand):
 
-class MultiInsertSetTextCommand(sublime_plugin.TextCommand):
     def run(self, edit, **args):
         text = args.get('formula')
         points = self.view.sel()
@@ -110,36 +111,54 @@ class MultiInsertSetTextCommand(sublime_plugin.TextCommand):
             try:
                 self.view.replace(edit, points[x], str(eval(text)))
             except:
-                echo("Sorry! Parse error, MultiFill dose not support pure Math-like formula yet, please make sure that your formula has no situation like 'y = 2x' etc. ")
-           
+                echo("Sorry! Parse error, MultiFill dose not support pure math-like formula yet.")
+                return
+
 
 #
 #   formula input
 #
 
-# class MultiInsertCommand(sublime_plugin.WindowCommand):
-class MultiInsertCommand(sublime_plugin.WindowCommand):
+def isDigit(c):
+    if c not in string.digits:
+        return False
+    else:
+        return True
+
+class MultiIntegerCommand(sublime_plugin.WindowCommand):
 
     def run(self):
-        self.window.show_input_panel("Multi Insert formula: ", "y = ", self.on_done, None, None)
-        pass
+        self.window.show_input_panel("Multi Integer formula: ", "y = ", self.on_done, None, None)
 
     def on_done(self, text):
-        text = text.replace(" ", "")
-        text = text.replace("y=", "")
-        # echo(text)
-
+        text = text.replace(" ", "").replace("y=", "")
+        flag = 1
+        deal = []
+        for i in xrange(0, len(text)):
+            if text[i] == 'x':
+                flag = 0
+                if i > 0 and isDigit(text[i - 1]):
+                    deal.append('*')
+                deal.append('x')
+            elif text[i] == '(':
+                if i > 0 and isDigit(text[i - 1]):
+                    deal.append('*')
+                deal.append('(')
+            else:
+                deal.append(text[i])
+        if flag:
+            echo("You should type the independent variable 'x' in the formula.")
+            return
+        deal = str(''.join(deal))
+        echo(deal)
         # call the formula text fill
         view = sublime.active_window().active_view()
         if view:
-            view.run_command('multi_insert_set_text', {'formula':text})
-
+            view.run_command('multi_integer_set_text', {'formula': deal})
 
 
 #
 #   debug
 #
-
-
 def echo(message):
     sublime.message_dialog(message)

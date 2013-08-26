@@ -5,6 +5,6 @@
 		"command": "multi_fill"
 	},{
 		"keys": ["ctrl+m","ctrl+i"],
-		"command": "multi_insert"
+		"command": "multi_integer"
 	}
 ]
