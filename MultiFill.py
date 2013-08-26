@@ -96,6 +96,46 @@ class MultiFillCommand(sublime_plugin.WindowCommand):
             view.run_command('multi_fill_set_text', {'chosen':index, 'custom': self.settings.get("custom")})
 
 
+
+#
+#   formula insert part
+#
+
+class MultiInsertSetTextCommand(sublime_plugin.TextCommand):
+    def run(self, edit, **args):
+        text = args.get('formula')
+        points = self.view.sel()
+        count = len(points)
+        for x in range(0, count):
+            try:
+                self.view.replace(edit, points[x], str(eval(text)))
+            except:
+                echo("Sorry! Parse error, MultiFill dose not support pure Math-like formula yet, please make sure that your formula has no situation like 'y = 2x' etc. ")
+           
+
+#
+#   formula input
+#
+
+# class MultiInsertCommand(sublime_plugin.WindowCommand):
+class MultiInsertCommand(sublime_plugin.WindowCommand):
+
+    def run(self):
+        self.window.show_input_panel("Multi Insert formula: ", "y = ", self.on_done, None, None)
+        pass
+
+    def on_done(self, text):
+        text = text.replace(" ", "")
+        text = text.replace("y=", "")
+        # echo(text)
+
+        # call the formula text fill
+        view = sublime.active_window().active_view()
+        if view:
+            view.run_command('multi_insert_set_text', {'formula':text})
+
+
+
 #
 #   debug
 #

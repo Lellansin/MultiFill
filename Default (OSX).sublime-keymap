@@ -3,5 +3,8 @@
 	{
 		"keys": ["ctrl+m","ctrl+f"],
 		"command": "multi_fill"
+	},{
+		"keys": ["ctrl+m","ctrl+i"],
+		"command": "multi_insert"
 	}
 ]
