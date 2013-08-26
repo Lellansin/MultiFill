@@ -18,11 +18,19 @@
 			]
 		},
 		{
-			"name":"V Roman (Ordered)",
+			"name"  : "V Roman (Ordered)",
 			"way"   : "ordered",
 			"values":
 			[
 				"I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII"
+			]
+		},
+		{
+			"name"  : "Numbers (Random)",
+			"way"   : "random",
+			"values": 
+			[
+				"0", "1", "2", "3", "4", "5", "6", "7", "8","9"
 			]
 		}			
 	]
