@@ -3,7 +3,13 @@ MultiFill
 
 A sublime text plugin to multi-fill text.
 
-With this plugin, you can press <code>[ctrl+m]</code> and <code>[ctrl+k]</code>, when you use the sublime choose multi-place, to select a text type to fill multi-place automatically.
+With this plugin, you can press <code>[ctrl+m]</code> and <code>[ctrl+k]</code>, when you use the sublime choose multi-place, to select a text type to fill multi-place automatically. And you can customize the texts to fill easily by edit the config file.
+
+If you just want to insert some numbers with your law, you can try <code>[ctrl+m]</code> and <code>[ctrl+i]</code> to input your formula like this :
+<pre>
+y = 2000 - 10*x
+</pre>
+the x is come form 0 to how many places you selected, and the every place will be filled with the result of the formula you typed.
 
 Um, I think it will be very useful, while we write .html .sql and so on.
 
@@ -11,7 +17,7 @@ Um, I think it will be very useful, while we write .html .sql and so on.
 Using Screenshot
 ====================
 
-Ordered fill numbers
+Fill ordered numbers
 --------------------
 
 you can choose to fill the multi-place with numbers increase.
@@ -42,8 +48,7 @@ the config file is <code>MultiFill.sublime-settings</code> it seems like:
 {
 	"custom":
 	[
-		// you can edit the default
-
+		// you can edit the default  
 		{
 			"name"  : "Names (ordered)",
 			"way"   : "ordered",
@@ -67,9 +72,8 @@ the config file is <code>MultiFill.sublime-settings</code> it seems like:
 			[
 				"I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII"
 			]
-		}
-
-		// you can add your new
+		}  
+		// you can add your new here  
 		,{
 			"name":"My text (ordered)",
 			"way"   : "ordered",
