@@ -150,7 +150,7 @@ class MultiIntegerCommand(sublime_plugin.WindowCommand):
             echo("You should type the independent variable 'x' in the formula.")
             return
         deal = str(''.join(deal))
-        echo(deal)
+        # echo(deal)
         # call the formula text fill
         view = sublime.active_window().active_view()
         if view:
