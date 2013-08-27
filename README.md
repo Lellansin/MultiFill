@@ -3,13 +3,13 @@ MultiFill
 
 A sublime text plugin to multi-fill text.
 
-With this plugin, you can press <code>[ctrl+m]</code> and <code>[ctrl+k]</code>, when you use the sublime choose multi-place, to select a text type to fill multi-place automatically. And you can customize the texts to fill easily by edit the config file.
+With this plugin, you can press <code>[ctrl+m]</code> and <code>[ctrl+f]</code> (short for Multi-Fill), when you use the sublime choose multi-place, to select a text type to fill multi-place automatically. And you can customize the texts to fill easily by edit the config file.
 
-If you just want to insert some numbers with your law, you can try <code>[ctrl+m]</code> and <code>[ctrl+i]</code> to input your formula like this :
+If you just want to insert some numbers with your law, you can try <code>[ctrl+m]</code> and <code>[ctrl+i]</code> (short for Multi-Interger), to input your formula like this :
 <pre>y = 2000 - 10x</pre>
-the x is form 0 to how many places you selected, and the every place will be filled with 2000 1990 1980 ... etc. the result of the formula you typed.
+the x is form 0 to how many places you selected, and the every place will be filled with 2000 1990 1980 ... etc. just the result of the formula you typed.
 
-It is very useful, while we write .html .sql and so on.
+It will be very useful, while we write .html .sql and so on.
 
 
 Using Screenshot
@@ -98,7 +98,7 @@ MultiFill
 
 MultiFill（多处填充）是一个 sublime text 的插件。主要作用就是在选中多出的时候能够自动填充设置好的文字和数字。
 
-当你选中多处之后按下 <code>[ctrl+m]</code> 和 <code>[ctrl+k]</code>，就可以调出 MultiFill 的主界面，你可以通过这个界面选择要填充的类型
+当你选中多处之后按下 <code>[ctrl+m]</code> 和 <code>[ctrl+f]</code>，就可以调出 MultiFill 的主界面，你可以通过这个界面选择要填充的类型
 
 如果你只是想按照某种规律来填充数字的话，推荐你使用 <code>[ctrl+m]</code> 和 <code>[ctrl+i]</code> ，接在出现的输入框中输入的你的公式即可：
 <pre>y = 2000 - 10x</pre>
