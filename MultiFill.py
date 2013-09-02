@@ -160,12 +160,9 @@ class MultiIntegerCommand(sublime_plugin.WindowCommand):
 class MultiSelectEditorCommand(sublime_plugin.WindowCommand):
     def run(self, **args):
         dir = args.get('direction')
-        window = sublime.active_window();
-        view = window.active_view();
-        group_view_now = window.get_view_index(view)
-        group_now = group_view_now[0];
-        view_now = group_view_now[1];
-        view_all = window.views_in_group(group_now)
+        view = self.window.active_view();
+        group_now, view_now = self.window.get_view_index(view)
+        view_all = self.window.views_in_group(group_now)
         view_num = len(view_all)
         index_to = view_now;
 
@@ -174,15 +171,14 @@ class MultiSelectEditorCommand(sublime_plugin.WindowCommand):
         elif (dir == 'right'):
             index_to = (view_now + 1) % view_num
 
-        # echo(str(view_all[index_to]))
-        window.focus_view(view_all[index_to])
+        self.window.focus_view(view_all[index_to])
 
 
 class MultiSelectWindowsCommand(sublime_plugin.WindowCommand):
     def run(self, **args):
         dir = args.get('direction')
-        group_num = sublime.active_window().num_groups()
-        group_now = sublime.active_window().active_group()
+        group_num = self.window.num_groups()
+        group_now = self.window.active_group()
         group_to = 0
 
         if (dir == 'left'):
@@ -190,25 +186,29 @@ class MultiSelectWindowsCommand(sublime_plugin.WindowCommand):
         elif (dir == 'right'):
             group_to = (group_now + 1) % group_num
 
-        # echo(str(group_to))
-        sublime.active_window().focus_group(group_to)
+        self.window.focus_group(group_to)
 
 
 class MultiMoveWindowCommand(sublime_plugin.WindowCommand):
     def run(self, **args):
         dir = args.get('direction')
-        view = sublime.active_window().active_view()
-        group_num = sublime.active_window().num_groups()
-        group_view_now = sublime.active_window().get_view_index(view)
-        group_now = group_view_now[0]
-        view_now = group_view_now[1]
+        view = self.window.active_view()
+        group_num = self.window.num_groups()
+        group_now, view_now = self.window.get_view_index(view)
 
         if (dir == 'left'):
             group_to = (group_now - 1) % group_num
         elif (dir == 'right'):
             group_to = (group_now + 1) % group_num
 
-        sublime.active_window().set_view_index(view, group_to, 0)
+        self.window.set_view_index(view, group_to, 0)
+
+
+class CloseOtherTabsCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        window = self.view.window()
+        group_index, view_index = window.get_view_index(self.view)
+        window.run_command("close_others_by_index", { "group": group_index, "index": view_index})
 
 
 #
