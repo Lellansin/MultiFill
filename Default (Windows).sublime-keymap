@@ -28,5 +28,13 @@
 	{
 		"keys": ["ctrl+alt+shift+right"],
 		"command": "multi_move_window", "args": {"direction": "right"}
+	},
+	{
+		"keys": ["ctrl+alt+c"],
+		"command": "close_other_tabs"
+	},
+	{
+		"keys": ["ctrl+alt+w"],
+		"command": "close_all" 
 	}
 ]

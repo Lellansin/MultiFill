@@ -22,11 +22,19 @@
 		"command": "multi_select_windows", "args": {"direction": "right"}
 	},
 	{
-		"keys": ["ctrl+shift+alt+left"],
+		"keys": ["ctrl+alt+shift+left"],
 		"command": "multi_move_window", "args": {"direction": "left"}
 	},
 	{
-		"keys": ["ctrl+shift+alt+right"],
+		"keys": ["ctrl+alt+shift+right"],
 		"command": "multi_move_window", "args": {"direction": "right"}
+	},
+	{
+		"keys": ["ctrl+alt+c"],
+		"command": "close_other_tabs"
+	},
+	{
+		"keys": ["ctrl+alt+w"],
+		"command": "close_all" 
 	}
 ]
