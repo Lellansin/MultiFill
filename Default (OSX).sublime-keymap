@@ -6,5 +6,27 @@
 	},{
 		"keys": ["ctrl+m","ctrl+i"],
 		"command": "multi_integer"
+	},{
+		"keys": ["alt+left"],
+		"command": "multi_select_editor", "args": {"direction": "left"}
+	},
+	{
+		"keys": ["alt+right"],
+		"command": "multi_select_editor", "args": {"direction": "right"}
+	},{
+		"keys": ["ctrl+alt+left"],
+		"command": "multi_select_windows", "args": {"direction": "left"}
+	},
+	{
+		"keys": ["ctrl+alt+right"],
+		"command": "multi_select_windows", "args": {"direction": "right"}
+	},
+	{
+		"keys": ["ctrl+shift+alt+left"],
+		"command": "multi_move_window", "args": {"direction": "left"}
+	},
+	{
+		"keys": ["ctrl+shift+alt+right"],
+		"command": "multi_move_window", "args": {"direction": "right"}
 	}
 ]

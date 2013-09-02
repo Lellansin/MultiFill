@@ -157,6 +157,60 @@ class MultiIntegerCommand(sublime_plugin.WindowCommand):
             view.run_command('multi_integer_set_text', {'formula': deal})
 
 
+class MultiSelectEditorCommand(sublime_plugin.WindowCommand):
+    def run(self, **args):
+        dir = args.get('direction')
+        window = sublime.active_window();
+        view = window.active_view();
+        group_view_now = window.get_view_index(view)
+        group_now = group_view_now[0];
+        view_now = group_view_now[1];
+        view_all = window.views_in_group(group_now)
+        view_num = len(view_all)
+        index_to = view_now;
+
+        if (dir == 'left'):
+            index_to = (view_now - 1) % view_num
+        elif (dir == 'right'):
+            index_to = (view_now + 1) % view_num
+
+        # echo(str(view_all[index_to]))
+        window.focus_view(view_all[index_to])
+
+
+class MultiSelectWindowsCommand(sublime_plugin.WindowCommand):
+    def run(self, **args):
+        dir = args.get('direction')
+        group_num = sublime.active_window().num_groups()
+        group_now = sublime.active_window().active_group()
+        group_to = 0
+
+        if (dir == 'left'):
+            group_to = (group_now - 1) % group_num
+        elif (dir == 'right'):
+            group_to = (group_now + 1) % group_num
+
+        # echo(str(group_to))
+        sublime.active_window().focus_group(group_to)
+
+
+class MultiMoveWindowCommand(sublime_plugin.WindowCommand):
+    def run(self, **args):
+        dir = args.get('direction')
+        view = sublime.active_window().active_view()
+        group_num = sublime.active_window().num_groups()
+        group_view_now = sublime.active_window().get_view_index(view)
+        group_now = group_view_now[0]
+        view_now = group_view_now[1]
+
+        if (dir == 'left'):
+            group_to = (group_now - 1) % group_num
+        elif (dir == 'right'):
+            group_to = (group_now + 1) % group_num
+
+        sublime.active_window().set_view_index(view, group_to, 0)
+
+
 #
 #   debug
 #
