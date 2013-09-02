@@ -5,12 +5,23 @@ A sublime text plugin to multi-fill text.
 
 With this plugin, you can press <code>[ctrl+m]</code> and <code>[ctrl+f]</code> (short for Multi-Fill), when you use the sublime choose multi-place, to select a text type to fill multi-place automatically. And you can customize the texts to fill easily by edit the config file.
 
+
+Formula insert
+====================
+
 If you just want to insert some numbers with your law, you can try <code>[ctrl+m]</code> and <code>[ctrl+i]</code> (short for Multi-Interger), to input your formula like this :
 <pre>y = 2000 - 10x</pre>
 the x is form 0 to how many places you selected, and the every place will be filled with 2000 1990 1980 ... etc. just the result of the formula you typed.
 
 It will be very useful, while we write .html .sql and so on.
 
+
+Multi switch
+====================
+
+First, you can switch to the prev or next editor view by <code>[alt+left]</code> and <code>[alt+right]</code>. 
+
+While you are using Split Editing, you can jump to the the prev or next window by <code>[ctrl+alt+left]</code> and <code>[ctrl+alt+right]</code> , last,  you can also jump with your view by <code>[ctrl+alt+shift+left]</code> and <code>[ctrl+alt+shift+right]</code>. 
 
 Using Screenshot
 ====================
