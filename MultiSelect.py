@@ -51,8 +51,17 @@ class MultiSelectAllCommand(sublime_plugin.TextCommand):
         del MultiSelectCommand.points[view_id]
 
 
-
-
+class MultiSelectLastCommand(sublime_plugin.TextCommand):
+    def run(self, edit, **args):
+        points = self.view.sel();
+        num_sel = len(points);        
+        if (num_sel < 2):
+            return 
+        last_points = points[-1];
+        # clear all
+        self.view.sel().clear()
+        # add last
+        self.view.sel().add(last_points)
 
 #
 #   debug
