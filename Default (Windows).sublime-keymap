@@ -6,6 +6,26 @@
 	},{
 		"keys": ["ctrl+m","ctrl+i"],
 		"command": "multi_integer"
+	},
+	{
+		"keys": ["ctrl+alt+d"],
+		"command": "multi_select"
+	},
+	{
+		"keys": ["ctrl+alt+enter"],
+		"command": "multi_select_all" 
+	},{
+		"keys": ["alt+up"],
+		"command": "multi_window_compare", "args": {"direction": "up", "sync":"false"}
+	},{
+		"keys": ["alt+down"],
+		"command": "multi_window_compare", "args": {"direction": "down", "sync":"false"}
+	},{
+		"keys": ["alt+shift+up"],
+		"command": "multi_window_compare", "args": {"direction": "up", "sync":"true"}
+	},{
+		"keys": ["alt+shift+down"],
+		"command": "multi_window_compare", "args": {"direction": "down", "sync":"true"}
 	},{
 		"keys": ["alt+left"],
 		"command": "multi_select_editor", "args": {"direction": "left"}
