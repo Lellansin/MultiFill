@@ -204,6 +204,49 @@ class MultiMoveWindowCommand(sublime_plugin.WindowCommand):
         self.window.set_view_index(view, group_to, 0)
 
 
+class MultiWindowCompareCommand(sublime_plugin.WindowCommand):
+    def run(self, **args):
+        dir = args.get('direction')
+        sync = args.get('sync')
+        view = self.window.active_view()
+        group_now, view_now = self.window.get_view_index(view)
+        group_num = self.window.num_groups()
+        group_to = 0;
+
+        if (group_num == 1):
+            return 
+        elif (group_num == 2):
+            group_to = 1 - group_now
+        elif (group_num == 3):
+            group_to = 1 - group_now
+            if (group_now == 2):
+                group_to = 1
+        elif (group_num == 4):
+            group_to = group_now + 1
+            if (group_now == 3):
+                group_to = 2
+
+        compare_view = self.window.active_view_in_group(group_to)
+        points = view.sel();
+        (row,col) = view.rowcol(points[0].begin())
+        (region_start_row, region_start_col) = view.rowcol(view.visible_region().begin())
+        (region_end_row, region_end_col) = view.rowcol(view.visible_region().end())
+        screen_start = region_start_row + 1
+
+        if (dir == 'up'):
+            amount = 1.0
+        elif (dir == 'down'):
+            amount = -1.0
+
+        view.run_command("scroll_lines", {"amount": amount });
+        if (sync == 'true'):
+            point = view.text_point((region_start_row + (region_end_row - region_start_row)/2), 0)        
+            compare_view.show_at_center(point)
+            # compare_view.run_command("goto_line", {"line": row+1} )        
+        compare_view.run_command("scroll_lines", {"amount": amount });
+
+
+
 class CloseOtherTabsCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         window = self.view.window()
