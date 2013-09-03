@@ -1,0 +1,6 @@
+Version 3.0.1
+-------------
+
+Add multi-select command, now you can free your ctrl + D.
+
+We will not be cautious any more while we use [ctrl+d] to make multiple selections. we can use the [ctrl+alt+d] to save the points and selections now, and use [ctrl+alt+enter] to restore all of it.
