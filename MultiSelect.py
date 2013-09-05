@@ -17,7 +17,9 @@ class MultiSelectCommand(sublime_plugin.WindowCommand):
             # judge if it's too many points
             saved_num = len(MultiSelectCommand.points[view_id])
             to_saved = len(points_new)
-            if ((saved_num + to_saved) > 32):
+            settings = sublime.load_settings('MultiFill.sublime-settings')
+            limit = settings.get('multi_select_limit')
+            if ((saved_num + to_saved) > limit):
             	echo('There are to many points and selections saved and this may case some problem. If you trust the performance of you CPU and RAM, you can change the limit of the MultiFill config file')
                 return
             # save new points
