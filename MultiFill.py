@@ -134,7 +134,7 @@ class MultiIntegerCommand(sublime_plugin.WindowCommand):
         text = text.replace(" ", "").replace("y=", "")
         flag = 1
         deal = []
-        for i in xrange(0, len(text)):
+        for i in range(0, len(text)):
             if text[i] == 'x':
                 flag = 0
                 if i > 0 and isDigit(text[i - 1]):
