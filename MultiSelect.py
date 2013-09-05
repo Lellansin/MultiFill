@@ -10,7 +10,7 @@ class MultiSelectCommand(sublime_plugin.WindowCommand):
         points_new = list(view.sel());
 
         # if it's the first
-        if ( not MultiSelectCommand.points.has_key(view_id) ):
+        if ( not view_id in MultiSelectCommand.points ):
             # first save
             MultiSelectCommand.points.setdefault(view_id, points_new);
         else:
@@ -35,9 +35,8 @@ class MultiSelectAllCommand(sublime_plugin.TextCommand):
     def run(self, edit, **args):
         view_id = self.view.id();
 
-        if ( not MultiSelectCommand.points.has_key(view_id) ):
-            print "MultiFill : No points saved"
-            return;
+        if ( not view_id in MultiSelectCommand.points ):
+            return
 
         # get points data
         points = MultiSelectCommand.points[view_id] 
