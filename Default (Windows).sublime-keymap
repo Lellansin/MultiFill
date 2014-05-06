@@ -27,13 +27,6 @@
 		"keys": ["alt+shift+down"],
 		"command": "multi_window_compare", "args": {"direction": "down", "sync":"true"}
 	},{
-		"keys": ["alt+left"],
-		"command": "multi_select_editor", "args": {"direction": "left"}
-	},
-	{
-		"keys": ["alt+right"],
-		"command": "multi_select_editor", "args": {"direction": "right"}
-	},{
 		"keys": ["ctrl+alt+left"],
 		"command": "multi_select_windows", "args": {"direction": "left"}
 	},
