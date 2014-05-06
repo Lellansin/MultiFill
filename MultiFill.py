@@ -157,23 +157,6 @@ class MultiIntegerCommand(sublime_plugin.WindowCommand):
             view.run_command('multi_integer_set_text', {'formula': deal})
 
 
-class MultiSelectEditorCommand(sublime_plugin.WindowCommand):
-    def run(self, **args):
-        dir = args.get('direction')
-        view = self.window.active_view();
-        group_now, view_now = self.window.get_view_index(view)
-        view_all = self.window.views_in_group(group_now)
-        view_num = len(view_all)
-        index_to = view_now;
-
-        if (dir == 'left'):
-            index_to = (view_now - 1) % view_num
-        elif (dir == 'right'):
-            index_to = (view_now + 1) % view_num
-
-        self.window.focus_view(view_all[index_to])
-
-
 class MultiSelectWindowsCommand(sublime_plugin.WindowCommand):
     def run(self, **args):
         dir = args.get('direction')
