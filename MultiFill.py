@@ -3,6 +3,7 @@ import sublime
 import sublime_plugin
 import random
 import string
+import time
 
 #
 #   inner function
@@ -34,6 +35,8 @@ def userCustom(order, data, length, pos):
         return data[pos]
     elif (order == 'random'):
         return data[random.randint(0, length - 1)]
+    elif (order == 'time'):
+        return time.strftime(data[random.randint(0, length - 1)])
 
 
 #
@@ -197,7 +200,7 @@ class MultiWindowCompareCommand(sublime_plugin.WindowCommand):
         group_to = 0;
 
         if (group_num == 1):
-            return 
+            return
         elif (group_num == 2):
             group_to = 1 - group_now
         elif (group_num == 3):
@@ -223,9 +226,9 @@ class MultiWindowCompareCommand(sublime_plugin.WindowCommand):
 
         view.run_command("scroll_lines", {"amount": amount });
         if (sync == 'true'):
-            point = view.text_point((region_start_row + (region_end_row - region_start_row)/2), 0)        
+            point = view.text_point((region_start_row + (region_end_row - region_start_row)/2), 0)
             compare_view.show_at_center(point)
-            # compare_view.run_command("goto_line", {"line": row+1} )        
+            # compare_view.run_command("goto_line", {"line": row+1} )
         compare_view.run_command("scroll_lines", {"amount": amount });
 
 
