@@ -3,6 +3,8 @@ import sublime
 import sublime_plugin
 import random
 import string
+import time
+import re
 
 #
 #   inner function
@@ -24,16 +26,56 @@ def upAlphabet(i):
 def lwAlphabet(i):
     return chr(i + 97)
 
+def lowerFirstCharacter(m):
+    return '_' + m.group(0).lower()
+
+def camelCase(s):
+    # 将正则表达式编译成Pattern对象
+    pattern = re.compile(r'[^a-zA-Z0-9]')
+    s = re.sub(pattern, ' ', s);
+    #使用空格隔开后，每个单词首字母大写
+    s = s.title()
+    #删除空格
+    s = s.replace(' ','');
+    #小写字符串的首字母
+    s = s[0:1].lower() + s[1:len(s)]
+    return s;
+
+def under_score(s):
+    s = s.replace('ID','Id');
+    # 将正则表达式编译成Pattern对象
+    pattern = re.compile(r'([A-Z])')
+    s = re.sub(pattern, lowerFirstCharacter, s);
+    #去掉两端下划线
+    s = s.strip('_')
+    return s;
+
 func = [nums, nums2, upAlphabet, lwAlphabet]
 
 
-def userCustom(order, data, length, pos):
+def userCustom(order, data, length, pos , str_sel):
     if (order == 'ordered'):
         if pos >= length:
             pos %= length
         return data[pos]
     elif (order == 'random'):
         return data[random.randint(0, length - 1)]
+    elif (order == 'time'):
+        return time.strftime(data[random.randint(0, length - 1)])
+    elif (order == 'replace'):
+        s = ''
+        for i in range(0,len(str_sel)):
+            s = s + data[random.randint(0, length - 1)]
+        return s[0:len(str_sel)]
+    elif (order == 'camelCase'):
+        return camelCase(str_sel)
+    elif (order == 'under_score'):
+        return under_score(str_sel)
+    elif (order == 'camelSwitch'):
+        if str_sel.find('_')>=0 :
+            return camelCase(str_sel)
+        else:
+            return under_score(str_sel)
 
 
 #
@@ -57,7 +99,7 @@ class MultiFillSetTextCommand(sublime_plugin.TextCommand):
             count = len(points)
             for i in range(0, count):
                 self.view.replace(edit, points[i], userCustom(
-                    item['way'], item["values"], len(item["values"]), i))
+                    item['way'], item["values"], len(item["values"]), i , self.view.substr(points[i]) ))
         else:
             points = self.view.sel()
             count = len(points)
@@ -197,7 +239,7 @@ class MultiWindowCompareCommand(sublime_plugin.WindowCommand):
         group_to = 0;
 
         if (group_num == 1):
-            return 
+            return
         elif (group_num == 2):
             group_to = 1 - group_now
         elif (group_num == 3):
@@ -223,9 +265,9 @@ class MultiWindowCompareCommand(sublime_plugin.WindowCommand):
 
         view.run_command("scroll_lines", {"amount": amount });
         if (sync == 'true'):
-            point = view.text_point((region_start_row + (region_end_row - region_start_row)/2), 0)        
+            point = view.text_point((region_start_row + (region_end_row - region_start_row)/2), 0)
             compare_view.show_at_center(point)
-            # compare_view.run_command("goto_line", {"line": row+1} )        
+            # compare_view.run_command("goto_line", {"line": row+1} )
         compare_view.run_command("scroll_lines", {"amount": amount });
 
 
